@@ -71,4 +71,39 @@ class CategoryCrud extends Controller
         return redirect()->route('category.list');
     }
 
+    public function reOrderProducts(Request $request, $categoryId)
+    {
+
+        $input = $request->all();
+
+        try{
+
+            foreach($input as $prod => $order)
+            {
+                $array = explode('_', $prod);
+
+                if($array[0] == 'order'){
+                    $prodId = $array[1];
+                    echo "prod: $prodId, ordem: $order <br>";
+
+                    Product::where('id', $prodId)
+                            ->update(['order'=>$order]);
+                }
+            }
+
+        }catch(\Exception $e){
+            abort(500);
+        }
+
+        echo '<script> alert("Nova ordem Salva"); window.history.go(-1)</script>';
+    }
+
+    public function reOrderCategories(Request $request)
+    {
+        $categories = Category::orderBy('order', 'asc')->get();
+
+        return view('categories.order', ['categories' => $categories,
+                                   ]);
+    }
+
 }

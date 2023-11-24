@@ -38,7 +38,7 @@ class ProductCrud extends Controller
     public function edit($id)
     {
         $product = Product::find($id);
-        $categories = Category::get()->where('active',true);
+        $categories = Category::get();
 
         return view('products.edit', ['product' => $product,
                                         'categories'=>$categories
@@ -48,7 +48,7 @@ class ProductCrud extends Controller
     public function create()
     {
 
-        $categories = Category::get()->where('active',true);
+        $categories = Category::get();
 
         return view('products.create', [
                                     'categories'=>$categories
@@ -103,6 +103,32 @@ class ProductCrud extends Controller
         }
 
         return redirect()->route('product.list');
+    }
+
+    public function activateProduct($prodId)
+    {
+
+        try{
+            Product::where('id',$prodId)->update(['active'=>true]);
+        }catch(\Exception $e){
+            abort(500);
+        }
+
+        return redirect()->route('product.list');
+
+    }
+
+    public function deactivateProduct($prodId)
+    {
+
+        try{
+            Product::where('id',$prodId)->update(['active'=>false]);
+        }catch(\Exception $e){
+            abort(500);
+        }
+
+        return redirect()->route('product.list');
+
     }
 
 }

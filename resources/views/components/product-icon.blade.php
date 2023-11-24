@@ -1,6 +1,13 @@
-<div>
+<tr
+@if(!$product->active)
 
-    <th scope="row">{{$product->id}}</th>
+style="background-color:#ffd1cb;"
+title="Produto desativado"
+
+@endif
+>
+
+    <th scope="row">{{$product->id}} {{$product->active}}</th>
     <td>{{$product->name}}</td>
     <td>R$ {{$product->price}}</td>
     <td
@@ -23,7 +30,29 @@
 
     <td><a href="{{URL::route('product.edit', $product->id)}}" class="btn btn-success">Editar</a></td>
 
-    <td><div class="btn btn-danger">Desativar</div></td>
 
 
-</div>
+    @if($product->active)
+
+    <td>
+        <a href="{{ URL::route('product.deactivate', $product->id) }}"
+        class="btn btn-danger">
+            Desativar
+        </a>
+    </td>
+
+    @else
+
+    <td>
+        <a href="{{ URL::route('product.activate', $product->id) }}"
+        class="btn btn-primary">
+            Ativar
+        </a>
+    </td>
+
+    @endif
+
+
+
+
+</tr>

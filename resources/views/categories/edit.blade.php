@@ -13,7 +13,7 @@
 <br/>
 <style>
 .form{
-    background-color: rgb(192, 230, 255);
+    background-color: rgb(179, 207, 226);
     padding:1.5rem;
     display: grid;
     grid-template-columns: auto auto;
@@ -29,6 +29,11 @@
     grid-template-columns: auto
 }
 
+.products_ordering{
+    margin:1rem;
+    padding:2rem;
+    background-color: rgb(203, 212, 218);
+}
 
 </style>
 
@@ -74,7 +79,7 @@
 
 
 
-        <button type="submit">Salvar</button>
+        <button type="submit">Salvar Cabeçalho</button>
     </form>
     @if(!$products || count($products)==0)
 
@@ -86,26 +91,47 @@
 
     @else
 
-    <div class="products_ordering">
+    <div >
 
-        @foreach($products as $p)
+
+
+
+        <form action="{{ URL::route('category.reorder.products', $category->id) }}"
+             method="POST"
+             class="products_ordering"
+             >
+
+
+        <h3>Ordenar Produtos</h3>
+            @method('patch')
+
+            @csrf
+
+            @foreach($products as $p)
 
             <div class="ordering_icon">
                     <input type="text" maxlength="255"
-                        name="order.{{$p->id}}"
+                        name="order_{{$p->id}}"
 
                         style="width:2rem"
                     value="{{$p->order}}" >
 
-                - {{$p->name}}
+                - {{$p->name}} - R$ {{$p->price}}
             </div>
 
         @endforeach
 
 
+
+        <button type="submit">Salvar Nova Ordem Produtos</button>
+
+
+
+        </form>
+
+
     </div>
     @endif
-
 
 
 

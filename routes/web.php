@@ -21,11 +21,12 @@ Route::get('/', function () {
 
 
 
-Route::prefix('admin')->controller(ProductCrud::class)->group(function () {
+Route::prefix('admin')->group(function () {
 
 
-
-
+    Route::get('/', function () {
+        return redirect(route('product.list'));
+    });
 
     Route::prefix('produtos')->controller(ProductCrud::class)->group(function () {
 
@@ -35,6 +36,8 @@ Route::prefix('admin')->controller(ProductCrud::class)->group(function () {
         Route::post('/store','store')->name('product.store');
         Route::get('/editar/{id}','edit')->name('product.edit');
         Route::patch('/update/{id}','update')->name('product.update');
+        Route::get('/ativar/{id}','activateProduct')->name('product.activate');
+        Route::get('/desativar/{id}','deactivateProduct')->name('product.deactivate');
 
     });
 
@@ -47,6 +50,9 @@ Route::prefix('admin')->controller(ProductCrud::class)->group(function () {
         Route::post('/store','store')->name('category.store');
         Route::get('/editar/{id}','edit')->name('category.edit');
         Route::patch('/update/{id}','update')->name('category.update');
+        Route::patch('/reorganiza/{categoryId}','reOrderProducts')->name('category.reorder.products');
+        Route::get('/reordenar','reOrderCategories')->name('category.reorder');
+        Route::patch('/reordenar/salvar','reOrderCategories')->name('category.reorder.save');
 
     });
 

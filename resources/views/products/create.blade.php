@@ -120,11 +120,18 @@
 
                         @foreach($categories as $cat)
                             <option value="{{$cat->id}}"
+
+
                                 @if (old('category_id')==$cat->id)
                                  selected
                                  @endif
                                 >
                                 {{$cat->name}}
+
+                                @if(!$cat->active)
+                                    (inativo)
+                                @endif
+
                             </option>
 
                         @endforeach

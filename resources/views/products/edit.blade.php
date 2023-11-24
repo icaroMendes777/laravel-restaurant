@@ -131,6 +131,11 @@
                                 @endif
                                 >
                                 {{$cat->name}}
+
+
+                                @if(!$cat->active)
+                                    (inativo)
+                                @endif
                             </option>
 
                         @endforeach
@@ -141,44 +146,7 @@
         </label>
 
     </div>
-        {{-- 'name'=>'required',
-        'code'=>'nullable',
-        'description'=>'nullable',
-        'ingredients'=>'nullable',
-        'price'=>'required', --}}
 
-{{--
-        <label>
-            Slug:
-            <input type="text" maxlength="200" name="slug" class="form-control @error('slug') is-invalid @enderror" value={{old('slug')}} >
-
-            @error('slug')
-                <div class="invalid-feedback">{{$message}}</div>
-            @enderror
-        </label>
-
-
-        <br/>
-        <br/>
-
-        <br/>
-        <br/>
-
-        <label>
-            Texto:
-            <textarea  name="text" class="form-control @error('text') is-invalid @enderror" >{{old('text')}}</textarea>
-            @error('text')
-                <div class="invalid-feedback">{{$message}}</div>
-            @enderror
-        </label>
-
-
-        <br/>
-        <br/>
-
-
-        <br/>
-        <br/> --}}
 
         <button type="submit">Cadastrar</button>
 </form>

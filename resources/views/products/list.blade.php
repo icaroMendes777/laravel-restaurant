@@ -47,11 +47,11 @@
     <tbody>
 
     @foreach($data as $d)
-        <tr>
+
 
             <x-product-icon :product="$d" />
 
-        </tr>
+
     @endforeach
 
 

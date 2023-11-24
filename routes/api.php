@@ -24,7 +24,7 @@ Route::controller(Products::class)->group(function () {
 
 
     Route::get('/get-all-products','getAllProducts');
-
+    Route::get('/menu','getMenu');
 
 
 });
