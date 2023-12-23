@@ -16,9 +16,11 @@ class Products extends Controller
         return Product::all();
     }
 
+    /**
+     * Retorna os produtos separados por sessão do menu
+     */
     public function getMenu()
     {
-
         $menu = Category::where('active',true)
                     ->with(array('product' => function($query) {
                         $query->where('active',true)

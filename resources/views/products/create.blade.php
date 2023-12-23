@@ -4,6 +4,16 @@
 
 @section('content')
 
+<style>
+    .form{
+        background-color: rgb(192, 230, 255);
+        padding:1.5rem;
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 3rem;
+    }
+</style>
+
 <div class="d-flex justify-content-between">
 <br/>
 <h2>Novo Produto</h2>
@@ -13,17 +23,7 @@
     </div>
 </div>
 <br/>
-<style>
-.form{
-    background-color: rgb(192, 230, 255);
-    padding:1.5rem;
-    display: grid;
-    grid-template-columns: auto auto;
-    gap: 3rem;
-}
 
-
-</style>
 
 <br/>
 <form action="{{ route('product.store') }}" method="POST">
@@ -142,44 +142,6 @@
         </label>
 
     </div>
-        {{-- 'name'=>'required',
-        'code'=>'nullable',
-        'description'=>'nullable',
-        'ingredients'=>'nullable',
-        'price'=>'required', --}}
-
-{{--
-        <label>
-            Slug:
-            <input type="text" maxlength="200" name="slug" class="form-control @error('slug') is-invalid @enderror" value={{old('slug')}} >
-
-            @error('slug')
-                <div class="invalid-feedback">{{$message}}</div>
-            @enderror
-        </label>
-
-
-        <br/>
-        <br/>
-
-        <br/>
-        <br/>
-
-        <label>
-            Texto:
-            <textarea  name="text" class="form-control @error('text') is-invalid @enderror" >{{old('text')}}</textarea>
-            @error('text')
-                <div class="invalid-feedback">{{$message}}</div>
-            @enderror
-        </label>
-
-
-        <br/>
-        <br/>
-
-
-        <br/>
-        <br/> --}}
 
 
 

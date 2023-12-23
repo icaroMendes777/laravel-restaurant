@@ -16,8 +16,6 @@ class ProductCrud extends Controller
 
     public function list(Request $request)
     {
-
-
         $search = $request->get('search');
         // dd($search);
          if( ! $search ){
@@ -66,8 +64,6 @@ class ProductCrud extends Controller
             'price'=>['required', 'string', new Price],
             'category_id'=>'required',
         ]);
-
-       // dd($validated);
 
         //o preço no banco aceita apenas  '.' como separador decimal
         $validated['price'] = str_replace(',', '.', $validated['price']);

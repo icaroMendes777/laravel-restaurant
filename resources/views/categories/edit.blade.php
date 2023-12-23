@@ -4,38 +4,47 @@
 
 @section('content')
 
+
+<style>
+    .form{
+        background-color: rgb(179, 207, 226);
+        padding:1.5rem;
+        display: grid;
+        grid-template-columns: auto auto;
+        gap: 3rem;
+    }
+
+    .ordering_icon{
+        display: inline-block
+    }
+
+    .products_ordering{
+        display: grid;
+        grid-template-columns: auto
+    }
+
+    .products_ordering{
+        margin:1rem;
+        padding:2rem;
+        background-color: rgb(203, 212, 218);
+    }
+
+    </style>
+
+
+
 <div class="d-flex justify-content-between">
-<br/>
-<h2>Editando Categoria: {{$category->name}}</h2>
+    <br/>
+
+    <h2>
+        Editando Categoria: {{$category->name}}
+    </h2>
 
 
 </div>
+
 <br/>
-<style>
-.form{
-    background-color: rgb(179, 207, 226);
-    padding:1.5rem;
-    display: grid;
-    grid-template-columns: auto auto;
-    gap: 3rem;
-}
 
-.ordering_icon{
-    display: inline-block
-}
-
-.products_ordering{
-    display: grid;
-    grid-template-columns: auto
-}
-
-.products_ordering{
-    margin:1rem;
-    padding:2rem;
-    background-color: rgb(203, 212, 218);
-}
-
-</style>
 
 <br/>
 <form action="{{ URL::route('category.update', $category->id) }}" method="POST">
